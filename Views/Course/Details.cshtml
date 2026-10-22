@@ -1,0 +1,15 @@
+@model Course
+@{ ViewData["Title"]="Course Details"; }
+<h1>Course Details</h1>
+<div class="card shadow-sm"><div class="card-body">
+<dl class="row">
+<dt class="col-sm-4">Course ID</dt><dd class="col-sm-8">@Model.CourseId</dd>
+<dt class="col-sm-4">Course Name</dt><dd class="col-sm-8">@Model.CourseName</dd>
+<dt class="col-sm-4">Duration</dt><dd class="col-sm-8">@Model.Duration</dd>
+<dt class="col-sm-4">Fees</dt><dd class="col-sm-8">₹@Model.Fees.ToString("N2")</dd>
+<dt class="col-sm-4">Discount</dt><dd class="col-sm-8">@Model.DiscountPercentage%</dd>
+<dt class="col-sm-4">Final Fees</dt><dd class="col-sm-8 fw-bold">₹@Model.CalculateFinalFees().ToString("N2")</dd>
+</dl></div></div>
+<p class="alert alert-info mt-3">Response caching: 5 minutes.</p>
+<a class="btn btn-primary" asp-action="Enroll" asp-route-id="@Model.CourseId">Enroll</a>
+<a class="btn btn-secondary" asp-action="Index">Back</a>

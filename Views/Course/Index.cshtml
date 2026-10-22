@@ -1,0 +1,13 @@
+@model IEnumerable<Course>
+@{ ViewData["Title"]="Courses"; }
+<h1>Online Course Enrollment System</h1>
+<p class="text-muted">Course list is cached with IMemoryCache for 5 minutes.</p>
+<div class="row g-3">@foreach(var c in Model) {
+<div class="col-md-6"><div class="card shadow-sm h-100"><div class="card-body">
+<h2 class="h5">@c.CourseName</h2><p>@c.Duration</p>
+<p>Original: <del>₹@c.Fees.ToString("N2")</del></p>
+<p class="fs-5 fw-bold text-success">Final: ₹@c.CalculateFinalFees().ToString("N2")</p>
+<span class="badge text-bg-info">@c.GetFeeLabel()</span>
+</div><div class="card-footer"><a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@c.CourseId">Details</a>
+<a class="btn btn-primary" asp-action="Enroll" asp-route-id="@c.CourseId">Enroll</a></div></div></div>
+}</div>

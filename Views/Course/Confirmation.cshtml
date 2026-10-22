@@ -1,0 +1,8 @@
+@model Course
+@{ ViewData["Title"]="Confirmation"; }
+<div class="alert alert-success"><h1 class="h4">Enrollment Successful</h1>
+<p>Thank you, <strong>@ViewBag.StudentName</strong>.</p>
+<p>Course: <strong>@Model.CourseName</strong></p>
+<p>Final Fees: <strong>₹@Model.CalculateFinalFees().ToString("N2")</strong></p>
+<p class="mb-0">Session CourseId: @ViewBag.SessionCourseId</p></div>
+<a class="btn btn-primary" asp-controller="Course" asp-action="Index">Back to Courses</a>

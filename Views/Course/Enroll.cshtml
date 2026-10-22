@@ -1,0 +1,12 @@
+@model EnrollmentViewModel
+@{ ViewData["Title"]="Enrollment"; }
+<h1>Course Enrollment</h1>
+<form asp-action="Enroll" method="post" class="card shadow-sm p-4">
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<label asp-for="StudentName" class="form-label"></label>
+<input asp-for="StudentName" class="form-control mb-2"><span asp-validation-for="StudentName" class="text-danger"></span>
+<label class="form-label">Course</label><input class="form-control mb-2" value="@Model.CourseName" readonly>
+<input type="hidden" asp-for="CourseId">
+<div class="alert alert-success">Final fees: <strong>₹@Model.FinalFees.ToString("N2")</strong></div>
+<button class="btn btn-primary">Submit Enrollment</button>
+</form>
